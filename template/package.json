@@ -1,6 +1,6 @@
 {
   "name": "<%= packageName %>",
-  "version": "<% version %>",
+  "version": "<%= version %>",
   "private": true,
   "scripts": {
     "dev": "nuxt",

@@ -1,4 +1,5 @@
 node_modules
 package-lock.json
+!template/package-lock.json
 # macOS
 .DS_Store
