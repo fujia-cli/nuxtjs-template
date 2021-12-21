@@ -1,4 +1,4 @@
-# nuxtjs-template
+# <%= packageName %>
 
 ## Build Setup
 
