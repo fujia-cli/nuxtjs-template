@@ -1,0 +1,49 @@
+variables:
+  IMAGE_URL: "registry.cn-shanghai.aliyuncs.com"
+
+stages:
+  - test
+  - release
+
+unit-test:
+  stage: test
+  tags:
+    - shell
+  script:
+    - whoami
+    - echo "单元测试， 暂在本地测试."
+  allow_failure: true
+  except:
+    - tags
+    - master
+
+e2e-test:
+  stage: test
+  tags:
+    - shell
+  script:
+    - echo "端对端测试， 暂在本地测试."
+  allow_failure: true
+  except:
+    - tags
+    - master
+
+server-release:
+  stage: release
+  tags:
+    - shell
+  before_script:
+    - chmod 755 scripts/release.sh
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
+    - ssh-keyscan -p 29999 175.27.190.215 >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - scripts/release.sh
+  only:
+    - tags
+

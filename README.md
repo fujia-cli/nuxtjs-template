@@ -14,5 +14,16 @@ A template for Nuxt.js.
 
 </div>
 
-## References
+## Deploy
 
+### tools
+
+1, PM2
+
+consult this article: [Deploy Nuxt using PM2](https://nuxtjs.org/deployments/pm2/)
+
+2, Nginx
+
+consult this article: [Using NGINX as a reverse proxy](https://nuxtjs.org/deployments/nginx/)
+
+## References
