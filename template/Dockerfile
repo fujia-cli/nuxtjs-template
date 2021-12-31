@@ -8,11 +8,13 @@ RUN mkdir -p /home/app
 
 WORKDIR /home/app
 
-COPY package*.json ./
+COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install --registry=https://registry.npmmirror.com/ --production
+RUN npm install --registry=https://registry.npmmirror.com/
 
 COPY . .
+
+RUN npm run build
 
 ENV NODE_ENV=production \
     APP_PORT=8081

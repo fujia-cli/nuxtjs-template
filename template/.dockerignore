@@ -17,6 +17,10 @@ pids
 
 .vscode
 
+.github
+
+.husky
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
